@@ -260,6 +260,7 @@ img { display: block; max-width: 100%; }
 .flap-back {
     background: linear-gradient(175deg, #EAFFFB 0%, #D7FFED 100%);
     transform: rotateX(180deg); /* pre-flipped so it faces us at open position */
+    clip-path: polygon(0 100%, 100% 100%, 50% 0%); /* inverted so the 180° flip renders it as a correct upward triangle when open */
 }
 
 /* ── Heart seal sticker ──────────────────────────────────────────────── */
