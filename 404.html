@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found · Our Story</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Dancing+Script:wght@600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream:      #FDF8F5;
+            --blush-light:#FCE8EF;
+            --blush-dark: #D4849A;
+            --gold:       #C9956E;
+            --brown:      #4A3728;
+            --brown-soft: #7D6055;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--blush-light) 100%);
+            color: var(--brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            max-width: 480px;
+            box-shadow: 0 24px 80px rgba(212,132,154,.2);
+        }
+        .big-heart {
+            font-size: 4rem;
+            animation: pulse 1.2s ease-in-out infinite;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        @keyframes pulse {
+            0%,100% { transform: scale(1); }
+            50%      { transform: scale(1.2); }
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: .75rem;
+        }
+        h1 em { color: var(--blush-dark); font-style: italic; }
+        p {
+            font-size: .95rem;
+            line-height: 1.75;
+            color: var(--brown-soft);
+            margin-bottom: 2rem;
+        }
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .8rem 2rem;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--blush-dark), #C96080);
+            color: #fff;
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(212,132,154,.35);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        a:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,132,154,.45); }
+        .sub {
+            margin-top: 1.5rem;
+            font-size: .75rem;
+            color: var(--blush-dark);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="big-heart">♡</span>
+        <h1>Lost in <em>our story?</em></h1>
+        <p>
+            The page you're looking for doesn't exist, but the story does.
+            Head back to the beginning.
+        </p>
+        <a href="/">← Back to Our Story</a>
+        <p class="sub">Every great love story starts somewhere.</p>
+    </div>
+</body>
+</html>

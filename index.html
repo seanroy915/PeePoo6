@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ╔══════════════════════════════════════════════════════════════════════════╗
+    ║  OUR STORY — index.html                                                 ║
+    ║  Relationship timeline · GitHub Pages edition                           ║
+    ╠══════════════════════════════════════════════════════════════════════════╣
+    ║  QUICK CUSTOMIZATION GUIDE                                              ║
+    ║  ─────────────────────────────────────────────────────────────────────  ║
+    ║  1. Title / description  → <title> and <meta name="description"> below  ║
+    ║  2. Social share image   → <meta property="og:image"> below             ║
+    ║  3. Colors / fonts       → css/styles.css  (:root section)              ║
+    ║  4. Month content        → Each <section class="ts"> in this file       ║
+    ║  5. Stats numbers        → data-count="XXX" attributes in #stats        ║
+    ║  6. Love letter          → #letter section at the bottom                ║
+    ║  7. Photos               → Replace <div class="ph">…</div> with         ║
+    ║                            <img src="photos/yourfile.jpg" alt="…">      ║
+    ╚══════════════════════════════════════════════════════════════════════════╝
+    -->
+
+    <!-- ── Primary Meta ──────────────────────────────────────── -->
+    <!-- REPLACE: update title and description to match your story -->
+    <title>Our Story ♡</title>
+    <meta name="description" content="A love story — from our very first conversation to six amazing months together.">
+    <meta name="author"      content="Made with love">
+    <meta name="theme-color" content="#D4849A">
+
+    <!--
+        PRIVACY NOTE
+        This site is public by default on GitHub Pages. If you'd like to
+        prevent search engines from indexing it, uncomment this line:
+        <meta name="robots" content="noindex, nofollow">
+    -->
+
+    <!-- ── Open Graph (WhatsApp, iMessage, Facebook link previews) ── -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Our Story ♡">
+    <meta property="og:description" content="A love story — from our very first conversation to six amazing months together.">
+    <!--
+        REPLACE: Add a share preview image (1200×630px recommended).
+        Upload the image to your /photos/ folder, then update the URL:
+        <meta property="og:image" content="https://YOUR-USERNAME.github.io/our-story/photos/og-preview.jpg">
+    -->
+
+    <!-- ── Twitter Card ─────────────────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Our Story ♡">
+    <meta name="twitter:description" content="A love story — from our very first conversation to six amazing months together.">
+
+    <!-- ── Favicon (inline SVG heart — no file needed) ─────── -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♡</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♡</text></svg>">
+
+    <!-- ── Google Fonts ─────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ── Stylesheet ───────────────────────────────────────── -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Screen-reader skip link -->
+<a class="skip-link" href="#s-talking">Skip to timeline</a>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     LOADING SCREEN
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div id="loader" aria-hidden="true">
+    <span class="loader-heart">♡</span>
+    <span class="loader-label">Loading our story…</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div id="progress" role="progressbar" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     FLOATING HEARTS CANVAS
+     ══════════════════════════════════════════════════════════════════════════ -->
+<canvas id="hearts" aria-hidden="true"></canvas>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     STICKY NAVIGATION
+     ══════════════════════════════════════════════════════════════════════════ -->
+<nav id="nav" aria-label="Journey chapters">
+    <div class="nav-inner">
+        <!-- REPLACE: change "Our Story ♡" to your own title if you like -->
+        <a class="nav-brand" href="#hero">Our Story ♡</a>
+        <div class="nav-tabs" role="tablist">
+            <button class="tab" role="tab" data-to="s-talking">Talking Stage</button>
+            <button class="tab" role="tab" data-to="s-m1">Month 1</button>
+            <button class="tab" role="tab" data-to="s-m2">Month 2</button>
+            <button class="tab" role="tab" data-to="s-m3">Month 3</button>
+            <button class="tab" role="tab" data-to="s-m4">Month 4</button>
+            <button class="tab" role="tab" data-to="s-m5">Month 5</button>
+            <button class="tab" role="tab" data-to="s-m6">Month 6</button>
+        </div>
+    </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+    <div class="hero-inner">
+        <!-- REPLACE all text below with your own words -->
+        <p class="hero-eyebrow">A love story in seven chapters</p>
+        <h1 class="hero-title">Our <em>Story</em></h1>
+        <p class="hero-sub">
+            From our very first conversation to six incredible months together —
+            every laugh, every adventure, and every quiet moment that made us <em>us</em>.
+        </p>
+        <!-- REPLACE with your actual start date -->
+        <span class="hero-date">✦ [Your Start Date] — Present ✦</span><br>
+        <a href="#s-talking" class="btn-start">
+            Start Our Journey <span class="arrow">↓</span>
+        </a>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     TIMELINE
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div id="timeline">
+
+<!-- ═══════════════════════════════════════
+     TALKING STAGE
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-talking">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Where it all began</span>
+            <h2 class="sec-title">The <em>Talking Stage</em></h2>
+            <!-- REPLACE: your actual date range -->
+            <span class="sec-date">[ Month ] — [ Month, Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured fu d1">
+            <div class="feat-photo">
+                <!--
+                    FEATURED PHOTO
+                    Replace the <div class="ph">…</div> block with:
+                    <img src="photos/talking-featured.jpg" alt="Short description"
+                         style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+                -->
+                <div class="polaroid tl" data-gal="talking" data-idx="0">
+                    <div class="ph">
+                        <span class="ico">📷</span>
+                        <span>Featured Photo</span>
+                        <span class="hint">Replace with your image</span>
+                    </div>
+                    <p class="pol-cap">The beginning of everything ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <!-- REPLACE: your story for this period -->
+                <div class="story">
+                    <p>
+                        Before we were <em>"us,"</em> there were late-night conversations that stretched
+                        until morning, messages we looked forward to every single day, and the slow,
+                        sweet realization that something really special was happening between us.
+                    </p>
+                    <div class="blockquote">
+                        <!-- REPLACE: your own favorite quote or memory -->
+                        "I remember the exact moment I knew I wanted to know everything about you."
+                    </div>
+                    <p>
+                        Every conversation felt like discovering a new piece of a puzzle we didn't
+                        know we were putting together. The talking stage was more than just getting
+                        to know each other — it was falling in like, one message at a time.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Highlights</h3>
+                    <!-- REPLACE: your own memory bullet points -->
+                    <ul class="hl-list">
+                        <li>The very first message that started it all</li>
+                        <li>Our first late-night phone call</li>
+                        <li>When we first realized this was something different</li>
+                        <li>The moment we decided to meet in person</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Early Memories ✦</h3>
+            <div class="gallery">
+                <!-- REPLACE each .ph with <img src="photos/…"> -->
+                <div class="gi" data-gal="talking" data-idx="1">
+                    <div class="polaroid tr">
+                        <div class="ph"><span class="ico">📷</span><span>Photo 2</span></div>
+                        <p class="pol-cap">A cherished moment</p>
+                    </div>
+                </div>
+                <div class="gi" data-gal="talking" data-idx="2">
+                    <div class="polaroid tl">
+                        <div class="ph"><span class="ico">📷</span><span>Photo 3</span></div>
+                        <p class="pol-cap">Another favorite ♡</p>
+                    </div>
+                </div>
+                <div class="gi" data-gal="talking" data-idx="3">
+                    <div class="polaroid">
+                        <div class="ph"><span class="ico">📷</span><span>Photo 4</span></div>
+                        <p class="pol-cap">So many good times</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 1
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m1">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter One</span>
+            <h2 class="sec-title"><em>Month 1</em></h2>
+            <span class="sec-date">[ Month Year ] — [ Month Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured flip fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tr" data-gal="m1" data-idx="0">
+                    <div class="ph">
+                        <span class="ico">📷</span>
+                        <span>Featured Photo</span>
+                        <span class="hint">Replace with your image</span>
+                    </div>
+                    <p class="pol-cap">Our first month together ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        Our first month together was filled with that electric, giddy feeling that comes
+                        with something truly new. Everything was a first — our first real date, our first
+                        inside jokes, our first shared playlist, our first everything.
+                    </p>
+                    <div class="blockquote">
+                        "Every moment with you felt like the best moment of my day."
+                    </div>
+                    <p>
+                        We were learning each other's coffee orders, favorite movies, and the way we each
+                        laugh when something is genuinely funny. New and exciting and absolutely wonderful.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 1 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>Our very first date</li>
+                        <li>The restaurant we loved most</li>
+                        <li>Our funniest moment together</li>
+                        <li>Your best memory from this month</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 1 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m1" data-idx="1">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">A beautiful memory</p></div>
+                </div>
+                <div class="gi" data-gal="m1" data-idx="2">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">One of my favorites ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m1" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">So much fun</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 2
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m2">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter Two</span>
+            <h2 class="sec-title"><em>Month 2</em></h2>
+            <span class="sec-date">[ Month Year ] — [ Month Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tl" data-gal="m2" data-idx="0">
+                    <div class="ph"><span class="ico">📷</span><span>Featured Photo</span></div>
+                    <p class="pol-cap">Month two was something special ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        By our second month, we were settling into something beautiful and comfortable.
+                        The excitement of new was deepening into something more — a warmth, a trust,
+                        a certainty that grew with every day we spent together.
+                    </p>
+                    <div class="blockquote">
+                        "Being with you feels like coming home."
+                    </div>
+                    <p>
+                        We found our rhythm, our favorite spots, our routines that became sacred little
+                        traditions. Month two felt like the story was really beginning to unfold.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 2 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>A special day we shared</li>
+                        <li>A place we discovered together</li>
+                        <li>Something funny that happened</li>
+                        <li>The thing you loved most this month</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 2 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m2" data-idx="1">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">Such a great day</p></div>
+                </div>
+                <div class="gi" data-gal="m2" data-idx="2">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">My favorite ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m2" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">Always smiling with you</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 3
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m3">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter Three</span>
+            <h2 class="sec-title"><em>Month 3</em></h2>
+            <span class="sec-date">[ Month Year ] — [ Month Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured flip fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tr" data-gal="m3" data-idx="0">
+                    <div class="ph"><span class="ico">📷</span><span>Featured Photo</span></div>
+                    <p class="pol-cap">Halfway there and only growing ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        Three months in, and every single day felt like evidence of how right this was.
+                        We'd been through the first big adventure together, the first moment of real
+                        vulnerability, the first time we chose each other in a meaningful way.
+                    </p>
+                    <div class="blockquote">
+                        "You make every ordinary day feel extraordinary."
+                    </div>
+                    <p>
+                        This was the month we started dreaming about the future together — little plans,
+                        small wishes, the kinds of conversations that make a relationship feel like
+                        a home you're building brick by brick.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 3 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>A trip or adventure you took</li>
+                        <li>A milestone moment</li>
+                        <li>Something you learned about each other</li>
+                        <li>Your favorite shared experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 3 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m3" data-idx="1">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">This one makes me smile</p></div>
+                </div>
+                <div class="gi" data-gal="m3" data-idx="2">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">A favorite moment ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m3" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">Always us ♡</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 4
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m4">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter Four</span>
+            <h2 class="sec-title"><em>Month 4</em></h2>
+            <span class="sec-date">[ Month Year ] — [ Month Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tl" data-gal="m4" data-idx="0">
+                    <div class="ph"><span class="ico">📷</span><span>Featured Photo</span></div>
+                    <p class="pol-cap">Four months of beautiful ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        Month four arrived with a quiet confidence between us. We'd stopped wondering
+                        and started simply knowing. This was real, it was good, and it was ours.
+                    </p>
+                    <div class="blockquote">
+                        "With you, I feel like the best version of myself."
+                    </div>
+                    <p>
+                        We cooked meals together, stayed in on rainy evenings, and made memories out
+                        of the smallest things — because with the right person, ordinary moments
+                        become the ones you treasure most.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 4 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>A new tradition you started</li>
+                        <li>A surprise or spontaneous moment</li>
+                        <li>The best date this month</li>
+                        <li>What you appreciate most about them</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 4 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m4" data-idx="1">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">One of the best days</p></div>
+                </div>
+                <div class="gi" data-gal="m4" data-idx="2">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">This moment ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m4" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">Perfect, as always</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 5
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m5">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter Five</span>
+            <h2 class="sec-title"><em>Month 5</em></h2>
+            <span class="sec-date">[ Month Year ] — [ Month Year ]</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured flip fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tr" data-gal="m5" data-idx="0">
+                    <div class="ph"><span class="ico">📷</span><span>Featured Photo</span></div>
+                    <p class="pol-cap">Five months of us ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        Five months in and our love story had chapters, callbacks, and a language that
+                        only we understood. You'd learned my silences and I'd learned your smiles.
+                    </p>
+                    <div class="blockquote">
+                        "I love the life we're building, one day at a time."
+                    </div>
+                    <p>
+                        This month brought new adventures, deeper conversations, and the continued joy
+                        of choosing each other — not because we had to, but because there was truly
+                        nowhere else we'd rather be.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 5 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>Something big you did together</li>
+                        <li>A funny story from this month</li>
+                        <li>A moment that meant everything</li>
+                        <li>What this month taught you about love</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 5 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m5" data-idx="1">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">A day to remember</p></div>
+                </div>
+                <div class="gi" data-gal="m5" data-idx="2">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">Pure happiness ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m5" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">The best of times</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MONTH 6
+     ═══════════════════════════════════════ -->
+<section class="ts" id="s-m6">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Chapter Six</span>
+            <h2 class="sec-title"><em>Month 6</em></h2>
+            <span class="sec-date">[ Month Year ] — Present</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="featured fu d1">
+            <div class="feat-photo">
+                <div class="polaroid tl" data-gal="m6" data-idx="0">
+                    <div class="ph"><span class="ico">📷</span><span>Featured Photo</span></div>
+                    <p class="pol-cap">Six months of something beautiful ♡</p>
+                </div>
+            </div>
+            <div class="feat-copy">
+                <div class="story">
+                    <p>
+                        Six months. Half a year of love, laughter, growth, and grace. Looking back at
+                        where we started versus where we are now fills me with a gratitude I don't have
+                        perfect words for.
+                    </p>
+                    <div class="blockquote">
+                        "Six months in, and somehow I fall for you a little more every single day."
+                    </div>
+                    <p>
+                        You've become my favorite person — the one I want to tell everything to, the one
+                        whose laugh I can hear with my eyes closed, the one who makes every chapter better
+                        just by being in it. Here's to everything that comes next.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <h3 class="hl-title">Month 6 Highlights</h3>
+                    <ul class="hl-list">
+                        <li>The thing you're most proud of together</li>
+                        <li>Your favorite memory of the whole journey</li>
+                        <li>What you're most excited about for the future</li>
+                        <li>How they've changed your life for the better</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fu d2">
+            <h3 class="gal-title">✦ Month 6 Memories ✦</h3>
+            <div class="gallery">
+                <div class="gi" data-gal="m6" data-idx="1">
+                    <div class="polaroid tr"><div class="ph"><span class="ico">📷</span><span>Photo 2</span></div><p class="pol-cap">Six months well spent</p></div>
+                </div>
+                <div class="gi" data-gal="m6" data-idx="2">
+                    <div class="polaroid tl"><div class="ph"><span class="ico">📷</span><span>Photo 3</span></div><p class="pol-cap">My absolute favorite ♡</p></div>
+                </div>
+                <div class="gi" data-gal="m6" data-idx="3">
+                    <div class="polaroid"><div class="ph"><span class="ico">📷</span><span>Photo 4</span></div><p class="pol-cap">Here's to forever</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</div><!-- /#timeline -->
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     STATS — "6 Months Later"
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="stats">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Looking back on us</span>
+            <h2 class="sec-title">6 Months <em>Later</em></h2>
+            <div class="sec-rule"></div>
+        </div>
+
+        <!--
+            REPLACE each data-count="XXX" with your real numbers.
+            The counters animate up from 0 when they scroll into view.
+        -->
+        <div class="stats-grid fu d1">
+            <div class="stat">
+                <span class="stat-ico">📅</span>
+                <span class="stat-num" data-count="183">0</span>
+                <span class="stat-lbl">Days Together</span>
+            </div>
+            <div class="stat">
+                <span class="stat-ico">🌹</span>
+                <span class="stat-num" data-count="42">0</span>
+                <span class="stat-lbl">Dates &amp; Adventures</span>
+            </div>
+            <div class="stat">
+                <span class="stat-ico">📸</span>
+                <span class="stat-num" data-count="318">0</span>
+                <span class="stat-lbl">Photos Together</span>
+            </div>
+            <div class="stat">
+                <span class="stat-ico">♡</span>
+                <span class="stat-num" data-count="1000">0</span>
+                <span class="stat-lbl">Reasons I Love You</span>
+            </div>
+        </div>
+
+        <!-- REPLACE the paragraph below with your own personal note -->
+        <div class="glass fu d2">
+            <p class="stats-note">
+                Six months ago I could never have imagined how much my life would change —
+                how much <em>better</em> everything would become. You've been worth every moment,
+                every mile, every late night. Here's to everything we've already lived
+                and everything still waiting for us.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     LOVE LETTER
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="letter">
+    <div class="wrap">
+
+        <div class="sec-head fu" style="margin-bottom:2.5rem;">
+            <span class="sec-label">From my heart to yours</span>
+            <h2 class="sec-title">A Love <em>Letter</em></h2>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="letter-card fu d1">
+            <!-- REPLACE [Her Name] with her actual name -->
+            <p class="letter-to">My dearest [Her Name],</p>
+            <!-- REPLACE the paragraphs below with your own letter -->
+            <div class="letter-body">
+                <p>
+                    There are moments in life that change everything, and meeting you was mine.
+                    I didn't expect to find someone who would make me see the world differently —
+                    who would make every ordinary day feel like something worth writing down.
+                </p>
+                <p>
+                    In these six months, you have shown me what it means to be truly known and still
+                    chosen. You've laughed at my jokes even when they weren't funny, held my hand when
+                    the world felt heavy, and reminded me that I am worthy of a love as beautiful as
+                    the one you give.
+                </p>
+                <p>
+                    I made this for you because our story deserves to be told — and retold, and
+                    remembered, and celebrated. Every photo, every memory, every quiet moment that
+                    didn't make it onto a page still lives in my heart.
+                </p>
+                <p>
+                    Thank you for being you. Thank you for choosing me.
+                    I can't wait to keep writing this story with you.
+                </p>
+            </div>
+            <!-- REPLACE [Your Name] with your actual name -->
+            <p class="letter-sig">Forever yours, [Your Name] ♡</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════════════════════ -->
+<footer>
+    <p>Made with <span class="hrt">♡</span> for the person who made everything better.</p>
+    <!-- REPLACE [Start Date] -->
+    <p>Our Story · [Start Date] — Always</p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     LIGHTBOX
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-close" aria-label="Close photo viewer">✕</button>
+    <div class="lb-counter" aria-live="polite"></div>
+    <div class="lb-stage">
+        <button class="lb-nav" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+        <div id="lb-content"></div>
+        <button class="lb-nav" id="lb-next" aria-label="Next photo">&#8250;</button>
+        <p class="lb-cap" id="lb-cap"></p>
+    </div>
+</div>
+
+<!-- ── JavaScript (deferred — runs after HTML is parsed) ─────── -->
+<script src="js/app.js" defer></script>
+
+</body>
+</html>
