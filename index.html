@@ -69,6 +69,46 @@
 <a class="skip-link" href="#s-talking">Skip to timeline</a>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
+     ENVELOPE INTRO SCREEN
+     Click the envelope to open it and reveal the site.
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div id="env-screen">
+
+    <!-- Soft floating hearts in the background of the envelope screen -->
+    <div class="env-hearts" aria-hidden="true">
+        <span style="--l:10%; --s:1.4rem; --t:7s;  --d:0s">♡</span>
+        <span style="--l:78%; --s:0.9rem; --t:9s;  --d:2s">♡</span>
+        <span style="--l:50%; --s:1.1rem; --t:6.5s;--d:1s">♡</span>
+        <span style="--l:28%; --s:0.75rem;--t:8s;  --d:3s">♡</span>
+        <span style="--l:88%; --s:1.2rem; --t:7.5s;--d:0.5s">♡</span>
+    </div>
+
+    <!-- The envelope -->
+    <div id="env">
+
+        <!-- Envelope body — white card with fold-line accents -->
+        <div class="env-body">
+            <!-- Letter that slides up once the flap opens -->
+            <div class="env-letter">
+                <span class="env-letter-heart">♡</span>
+                <span class="env-letter-name">Kana chan &amp; Sean chan</span>
+            </div>
+        </div>
+
+        <!-- Flap — rotates in 3D on click -->
+        <div class="env-flap">
+            <div class="flap-front"></div>  <!-- visible when sealed  -->
+            <div class="flap-back"></div>   <!-- visible when open    -->
+            <!-- Heart seal sticker (hides automatically as flap flips) -->
+            <div class="env-seal"><span>♡</span></div>
+        </div>
+
+    </div>
+
+    <p class="env-hint">click to open ♡</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
      LOADING SCREEN
      ══════════════════════════════════════════════════════════════════════════ -->
 <div id="loader" aria-hidden="true">

@@ -17,6 +17,31 @@
 'use strict';
 
 /* ─────────────────────────────────────────────────────────────
+   0. ENVELOPE INTRO
+   User clicks the sealed envelope → flap opens in 3D →
+   a letter slides up → the overlay fades out → site appears.
+   ───────────────────────────────────────────────────────────── */
+(function initEnvelope() {
+    const screen = document.getElementById('env-screen');
+    const env    = document.getElementById('env');
+    if (!screen || !env) return;
+
+    function openEnvelope() {
+        /* Prevent a second click mid-animation */
+        env.removeEventListener('click', openEnvelope);
+        env.style.cursor = 'default';
+
+        /* Step 1: add .open → triggers flap rotation + letter slide (CSS) */
+        env.classList.add('open');
+
+        /* Step 2: after flap + letter animation (~1.7 s), fade the overlay */
+        setTimeout(() => screen.classList.add('gone'), 1700);
+    }
+
+    env.addEventListener('click', openEnvelope);
+}());
+
+/* ─────────────────────────────────────────────────────────────
    1. LOADING SCREEN
    Hide after all assets finish loading (fonts, images, etc.)
    ───────────────────────────────────────────────────────────── */

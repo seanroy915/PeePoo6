@@ -102,6 +102,212 @@ img { display: block; max-width: 100%; }
 }
 
 /* =============================================================================
+   ENVELOPE INTRO SCREEN
+   ============================================================================= */
+
+/* Full-screen overlay */
+#env-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;            /* sits above everything, including the loader */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    background: linear-gradient(140deg, #F3FFFA 0%, #D7FFED 55%, #B9ECDA 100%);
+    transition: opacity .65s ease, visibility .65s ease;
+}
+#env-screen.gone {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Floating hearts decoration on the envelope screen */
+.env-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.env-hearts span {
+    position: absolute;
+    left: var(--l);
+    bottom: -60px;
+    font-size: var(--s);
+    color: rgba(152,209,234,.38);
+    animation: envFloat var(--t) ease-in-out var(--d) infinite;
+}
+@keyframes envFloat {
+    0%   { transform: translateY(0) rotate(-8deg);    opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: .5; }
+    100% { transform: translateY(-115vh) rotate(10deg); opacity: 0; }
+}
+
+/* ── Envelope outer container ───────────────────────────────────────── */
+#env {
+    position: relative;
+    width: 340px;
+    height: 220px;
+    cursor: pointer;
+    user-select: none;
+    perspective: 900px;
+    /* drop-shadow unifies the shadow around the envelope's irregular shape */
+    filter: drop-shadow(0 22px 44px rgba(152,209,234,.38));
+    transition: transform .25s ease, filter .25s ease;
+}
+#env:hover  { transform: translateY(-6px); filter: drop-shadow(0 30px 56px rgba(152,209,234,.52)); }
+#env:active { transform: translateY(-2px); }
+
+/* ── Envelope body (white card) ─────────────────────────────────────── */
+.env-body {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Bottom fold triangle — the V-crease visible below the sealed flap */
+.env-body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(162,223,203,.32);
+    clip-path: polygon(0 100%, 50% 47%, 100% 100%);
+}
+
+/* Left fold line hint */
+.env-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(152,209,234,.1);
+    clip-path: polygon(0 0, 50% 47%, 0 100%);
+}
+
+/* ── Letter that peeks out from inside the envelope ─────────────────── */
+.env-letter {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(36px);
+    width: 74%;
+    padding: 10px 16px 13px;
+    background: linear-gradient(135deg, #F3FFFA 0%, #E6FFF8 100%);
+    border: 1.5px solid rgba(152,209,234,.35);
+    border-radius: 3px;
+    text-align: center;
+    opacity: 0;
+    z-index: 2;
+    transition: transform .55s cubic-bezier(.34,1.56,.64,1) .2s,
+                opacity   .45s ease                          .2s;
+}
+#env.open .env-letter {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.env-letter-heart {
+    display: block;
+    font-size: 1.5rem;
+    color: #98D1EA;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+.env-letter-name {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    color: #1A4A5C;
+    white-space: nowrap;
+}
+
+/* ── Flap — the 3D-rotating top triangle ────────────────────────────── */
+.env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 57%;          /* tall enough so the triangle tip reaches mid-envelope */
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .85s cubic-bezier(.4,0,.2,1);
+    z-index: 5;
+}
+#env.open .env-flap {
+    transform: rotateX(-185deg); /* extra 5° snaps it flat behind the envelope */
+}
+
+/* Both faces share this base */
+.flap-front,
+.flap-back {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%); /* downward-pointing triangle */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Front face — what you see when the envelope is sealed */
+.flap-front {
+    background: linear-gradient(175deg, #B4E7F2 0%, #98D1EA 45%, #A2DFCB 100%);
+}
+
+/* Back face — inside of the flap, seen once open */
+.flap-back {
+    background: linear-gradient(175deg, #EAFFFB 0%, #D7FFED 100%);
+    transform: rotateX(180deg); /* pre-flipped so it faces us at open position */
+}
+
+/* ── Heart seal sticker ──────────────────────────────────────────────── */
+.env-seal {
+    position: absolute;
+    bottom: 11%;          /* sits in the lower third of the flap triangle */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 46px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    color: #98D1EA;
+    box-shadow: 0 0 0 3px rgba(152,209,234,.28), 0 4px 16px rgba(152,209,234,.42);
+    animation: sealPulse 2.4s ease-in-out infinite;
+    backface-visibility: hidden;        /* disappears when flap flips to back */
+    -webkit-backface-visibility: hidden;
+}
+@keyframes sealPulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(152,209,234,.28), 0 4px 16px rgba(152,209,234,.42); }
+    50%      { box-shadow: 0 0 0 7px rgba(152,209,234,.38), 0 6px 24px rgba(152,209,234,.58); }
+}
+
+/* ── "Click to open" hint text ──────────────────────────────────────── */
+.env-hint {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.35rem;
+    color: #3D6E80;
+    letter-spacing: .02em;
+    opacity: 0;
+    animation: fadeUp .6s ease 1.2s both;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Mobile sizing ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    #env { width: 290px; height: 188px; }
+    .env-letter-name { font-size: .88rem; }
+    .env-seal { width: 40px; height: 40px; font-size: 1.1rem; }
+}
+
+/* =============================================================================
    SCROLL PROGRESS BAR
    ============================================================================= */
 #progress {
