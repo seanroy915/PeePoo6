@@ -734,7 +734,7 @@
     <div class="wrap">
 
         <div class="sec-head fu">
-            <span class="sec-label">Counting every moment</span>
+            <span class="sec-label"></span>
             <h2 class="sec-title">Time <em>Together</em></h2>
             <div class="sec-rule"></div>
         </div>
@@ -785,17 +785,19 @@
             <div class="sec-rule"></div>
         </div>
 
-        <div class="songs-grid fu d1">
+        <div class="songs-grid">
 
-            <div class="song-card">
+            <div class="song-card fu">
                 <div class="song-info">
                     <span class="song-ico">🦕</span>
-                    <div>
+                    <div class="song-meta">
                         <p class="song-title">Clean Up 2</p>
                         <p class="song-artist">Barney</p>
                     </div>
+                    <button class="song-btn" id="btn-barney" onclick="toggleSong('barney')" aria-label="Play or pause">
+                        <span class="song-btn-ico">▶</span>
+                    </button>
                 </div>
-                <button class="song-btn" id="btn-barney" onclick="toggleSong('barney')">▶&nbsp; Play</button>
                 <div class="song-yt">
                     <iframe id="yt-barney"
                         src="https://www.youtube.com/embed/whrNJH8S-Ys?enablejsapi=1&origin=https://seanroy915.github.io"
@@ -803,15 +805,17 @@
                 </div>
             </div>
 
-            <div class="song-card">
+            <div class="song-card fu d1">
                 <div class="song-info">
                     <span class="song-ico">🌹</span>
-                    <div>
+                    <div class="song-meta">
                         <p class="song-title">How to Disappear</p>
                         <p class="song-artist">Lana Del Rey</p>
                     </div>
+                    <button class="song-btn" id="btn-lana" onclick="toggleSong('lana')" aria-label="Play or pause">
+                        <span class="song-btn-ico">▶</span>
+                    </button>
                 </div>
-                <button class="song-btn" id="btn-lana" onclick="toggleSong('lana')">▶&nbsp; Play</button>
                 <div class="song-yt">
                     <iframe id="yt-lana"
                         src="https://www.youtube.com/embed/9UBJy-yJTXE?enablejsapi=1&origin=https://seanroy915.github.io"
@@ -819,15 +823,17 @@
                 </div>
             </div>
 
-            <div class="song-card">
+            <div class="song-card fu d2">
                 <div class="song-info">
                     <span class="song-ico">🎹</span>
-                    <div>
+                    <div class="song-meta">
                         <p class="song-title">Für Elise</p>
                         <p class="song-artist">Beethoven</p>
                     </div>
+                    <button class="song-btn" id="btn-furelise" onclick="toggleSong('furelise')" aria-label="Play or pause">
+                        <span class="song-btn-ico">▶</span>
+                    </button>
                 </div>
-                <button class="song-btn" id="btn-furelise" onclick="toggleSong('furelise')">▶&nbsp; Play</button>
                 <div class="song-yt">
                     <iframe id="yt-furelise"
                         src="https://www.youtube.com/embed/bP70gBZc564?enablejsapi=1&origin=https://seanroy915.github.io"
@@ -835,15 +841,17 @@
                 </div>
             </div>
 
-            <div class="song-card">
+            <div class="song-card fu d3">
                 <div class="song-info">
                     <span class="song-ico">✈️</span>
-                    <div>
+                    <div class="song-meta">
                         <p class="song-title">Long Distance</p>
                         <p class="song-artist">G.E.M.</p>
                     </div>
+                    <button class="song-btn" id="btn-longdistance" onclick="toggleSong('longdistance')" aria-label="Play or pause">
+                        <span class="song-btn-ico">▶</span>
+                    </button>
                 </div>
-                <button class="song-btn" id="btn-longdistance" onclick="toggleSong('longdistance')">▶&nbsp; Play</button>
                 <div class="song-yt">
                     <iframe id="yt-longdistance"
                         src="https://www.youtube.com/embed/l3lIqaUL71w?enablejsapi=1&origin=https://seanroy915.github.io"
@@ -906,10 +914,9 @@
     };
 
     function syncBtn(id, state) {
-        var btn = document.getElementById('btn-' + id);
-        if (!btn) return;
-        // state 1 = playing
-        btn.innerHTML = state === 1 ? '&#9646;&#9646;&nbsp; Pause' : '&#9654;&nbsp; Play';
+        var ico = document.querySelector('#btn-' + id + ' .song-btn-ico');
+        if (!ico) return;
+        ico.textContent = state === 1 ? '⏸' : '▶';
     }
 
     window.toggleSong = function (id) {
