@@ -812,6 +812,63 @@ img { display: block; max-width: 100%; }
 /* =============================================================================
    LOVE LETTER
    ============================================================================= */
+/* ── Timer ── */
+#s-timer { background: var(--cream); }
+
+.timer-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+    margin: 0 auto;
+    max-width: 860px;
+}
+
+.timer-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(152,209,234,.18);
+    min-width: 110px;
+}
+
+.timer-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--blush-dark);
+    line-height: 1;
+    min-width: 2.5ch;
+    text-align: center;
+}
+
+.timer-lbl {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-top: 0.5rem;
+}
+
+.timer-sep {
+    font-size: 2rem;
+    color: var(--blush-dark);
+    padding: 0 0.25rem;
+    align-self: center;
+    margin-bottom: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .timer-unit { min-width: 80px; padding: 1rem 1.1rem; }
+    .timer-num  { font-size: 2.2rem; }
+    .timer-sep  { display: none; }
+}
+
 #letter {
     padding: 5.5rem 1.5rem;
     background: linear-gradient(155deg, var(--cream) 0%, var(--blush-light) 100%);

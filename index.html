@@ -141,6 +141,7 @@
             <button class="tab" role="tab" data-to="s-m4">Month 4</button>
             <button class="tab" role="tab" data-to="s-m5">Month 5</button>
             <button class="tab" role="tab" data-to="s-m6">Month 6</button>
+            <button class="tab" role="tab" data-to="s-timer">Timer ♡</button>
         </div>
     </div>
 </nav>
@@ -726,6 +727,52 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
+     TIMER
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="s-timer">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Counting every moment</span>
+            <h2 class="sec-title">Time <em>Together</em></h2>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="timer-wrap fu d1">
+            <div class="timer-unit">
+                <span class="timer-num" id="t-months">0</span>
+                <span class="timer-lbl">Months</span>
+            </div>
+            <div class="timer-sep">·</div>
+            <div class="timer-unit">
+                <span class="timer-num" id="t-days">0</span>
+                <span class="timer-lbl">Days</span>
+            </div>
+            <div class="timer-sep">·</div>
+            <div class="timer-unit">
+                <span class="timer-num" id="t-hours">0</span>
+                <span class="timer-lbl">Hours</span>
+            </div>
+            <div class="timer-sep">·</div>
+            <div class="timer-unit">
+                <span class="timer-num" id="t-mins">0</span>
+                <span class="timer-lbl">Minutes</span>
+            </div>
+            <div class="timer-sep">·</div>
+            <div class="timer-unit">
+                <span class="timer-num" id="t-secs">0</span>
+                <span class="timer-lbl">Seconds</span>
+            </div>
+        </div>
+
+        <div class="glass fu d2" style="text-align:center;margin-top:2rem;">
+            <p class="stats-note">Since January 14, 2026 at 10:30 PM ♡</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════════════════════ -->
 <footer>
@@ -750,6 +797,44 @@
 
 <!-- ── JavaScript (deferred — runs after HTML is parsed) ─────── -->
 <script src="js/app.js" defer></script>
+
+<script>
+(function () {
+    // Jan 14 2026 10:30 PM Eastern = Jan 15 2026 03:30:00 UTC
+    var START = new Date('2026-01-15T03:30:00Z');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+        var now = new Date();
+
+        // Count full calendar months elapsed
+        var months = (now.getFullYear() - START.getFullYear()) * 12 + (now.getMonth() - START.getMonth());
+        var anniv = new Date(START);
+        anniv.setMonth(anniv.getMonth() + months);
+        if (now < anniv) { months--; anniv.setMonth(anniv.getMonth() - 1); }
+
+        var remainMs = now - anniv;
+        var totalSecs = Math.floor(remainMs / 1000);
+        var days  = Math.floor(totalSecs / 86400);
+        var hours = Math.floor((totalSecs % 86400) / 3600);
+        var mins  = Math.floor((totalSecs % 3600) / 60);
+        var secs  = totalSecs % 60;
+
+        var mEl = document.getElementById('t-months');
+        if (mEl) {
+            document.getElementById('t-months').textContent = months;
+            document.getElementById('t-days').textContent   = days;
+            document.getElementById('t-hours').textContent  = pad(hours);
+            document.getElementById('t-mins').textContent   = pad(mins);
+            document.getElementById('t-secs').textContent   = pad(secs);
+        }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+})();
+</script>
 
 </body>
 </html>
