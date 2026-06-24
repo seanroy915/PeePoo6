@@ -142,6 +142,7 @@
             <button class="tab" role="tab" data-to="s-m5">Month 5</button>
             <button class="tab" role="tab" data-to="s-m6">Month 6</button>
             <button class="tab" role="tab" data-to="s-timer">Timer ♡</button>
+            <button class="tab" role="tab" data-to="s-songs">Kana chan's Songs</button>
         </div>
     </div>
 </nav>
@@ -773,6 +774,56 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
+     KANA CHAN'S SONGS
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="s-songs">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Kana chan's playlist</span>
+            <h2 class="sec-title">Our <em>Songs</em></h2>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="songs-grid fu d1">
+
+            <div class="song-card">
+                <div class="song-info">
+                    <span class="song-ico">🦕</span>
+                    <div>
+                        <p class="song-title">Clean Up 2</p>
+                        <p class="song-artist">Barney</p>
+                    </div>
+                </div>
+                <button class="song-btn" id="btn-barney" onclick="toggleSong('barney')">▶&nbsp; Play</button>
+                <div class="song-yt">
+                    <iframe id="yt-barney"
+                        src="https://www.youtube.com/embed/whrNJH8S-Ys?enablejsapi=1&origin=https://seanroy915.github.io"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="song-info">
+                    <span class="song-ico">🌹</span>
+                    <div>
+                        <p class="song-title">How to Disappear</p>
+                        <p class="song-artist">Lana Del Rey</p>
+                    </div>
+                </div>
+                <button class="song-btn" id="btn-lana" onclick="toggleSong('lana')">▶&nbsp; Play</button>
+                <div class="song-yt">
+                    <iframe id="yt-lana"
+                        src="https://www.youtube.com/embed/9UBJy-yJTXE?enablejsapi=1&origin=https://seanroy915.github.io"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════════════════════ -->
 <footer>
@@ -797,6 +848,45 @@
 
 <!-- ── JavaScript (deferred — runs after HTML is parsed) ─────── -->
 <script src="js/app.js" defer></script>
+
+<script>
+// ── YouTube music player ──────────────────────────────────────────
+(function () {
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    var players = {};
+
+    window.onYouTubeIframeAPIReady = function () {
+        players.barney = new YT.Player('yt-barney', {
+            events: { onStateChange: function (e) { syncBtn('barney', e.data); } }
+        });
+        players.lana = new YT.Player('yt-lana', {
+            events: { onStateChange: function (e) { syncBtn('lana', e.data); } }
+        });
+    };
+
+    function syncBtn(id, state) {
+        var btn = document.getElementById('btn-' + id);
+        if (!btn) return;
+        // state 1 = playing
+        btn.innerHTML = state === 1 ? '&#9646;&#9646;&nbsp; Pause' : '&#9654;&nbsp; Play';
+    }
+
+    window.toggleSong = function (id) {
+        var p = players[id];
+        if (!p || typeof p.getPlayerState !== 'function') return;
+        // Pause the other song first
+        Object.keys(players).forEach(function (k) {
+            if (k !== id && players[k] && typeof players[k].pauseVideo === 'function') {
+                players[k].pauseVideo();
+            }
+        });
+        p.getPlayerState() === 1 ? p.pauseVideo() : p.playVideo();
+    };
+})();
+</script>
 
 <script>
 (function () {

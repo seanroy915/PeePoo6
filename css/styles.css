@@ -812,6 +812,99 @@ img { display: block; max-width: 100%; }
 /* =============================================================================
    LOVE LETTER
    ============================================================================= */
+/* ── Songs ── */
+#s-songs {
+    background: linear-gradient(155deg, var(--blush-light) 0%, var(--cream) 100%);
+    padding: 5.5rem 1.5rem;
+}
+
+.songs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.song-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 2rem;
+    box-shadow: 0 8px 48px rgba(152,209,234,.22);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.song-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blush-dark), var(--gold), var(--blush-dark));
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.song-ico { font-size: 2.4rem; line-height: 1; }
+
+.song-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--brown);
+}
+
+.song-artist {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    color: var(--blush-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 0.25rem;
+}
+
+.song-btn {
+    background: var(--blush-dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.65rem 1.8rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.12s;
+    align-self: flex-start;
+}
+
+.song-btn:hover  { background: var(--brown); transform: scale(1.04); }
+.song-btn:active { transform: scale(0.97); }
+
+.song-yt {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.song-yt iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 660px) {
+    .songs-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Timer ── */
 #s-timer { background: var(--cream); }
 
