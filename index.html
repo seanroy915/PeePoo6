@@ -143,6 +143,7 @@
             <button class="tab" role="tab" data-to="s-m6">Month 6</button>
             <button class="tab" role="tab" data-to="s-timer">Timer ♡</button>
             <button class="tab" role="tab" data-to="s-songs">Kana chan's Songs</button>
+            <button class="tab" role="tab" data-to="s-compliments">Compliments ♡</button>
         </div>
     </div>
 </nav>
@@ -863,6 +864,31 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
+     COMPLIMENT GENERATOR
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="s-compliments">
+    <div class="wrap">
+
+        <div class="sec-head fu">
+            <span class="sec-label">Just because</span>
+            <h2 class="sec-title">Things I <em>Love</em> About You</h2>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="cgen-wrap fu d1">
+            <div class="cgen-card" id="cgen-card">
+                <span class="cgen-deco">♡</span>
+                <p class="cgen-text" id="cgen-text">Press the button to hear something sweet ♡</p>
+            </div>
+            <button class="cgen-btn" id="cgen-btn" onclick="newCompliment()">
+                <span class="cgen-btn-inner">✦ Another one ✦</span>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════════════════════ -->
 <footer>
@@ -889,6 +915,59 @@
 <script src="js/app.js" defer></script>
 
 <script>
+// ── Compliment generator ─────────────────────────────────────────
+(function () {
+    var compliments = [
+        "You have the most contagious laugh in the entire world and it makes everything better.",
+        "The way you light up when you talk about something you care about is genuinely one of my favorite things to witness.",
+        "You are so impossibly cute it should be illegal, kanapee.",
+        "You are one of the smartest people I know and watching you figure things out is actually inspiring.",
+        "Your patience is something I admire more than you'll ever know. Thank you for always giving me grace.",
+        "You make the yummiest food in the world and I think about the oyakodon more than is normal.",
+        "You are so supportive and I genuinely attribute so much of my success to you. You're the goat.",
+        "I love the way you care so deeply about the people and things in your life. It's beautiful.",
+        "You have incredible style and you always look so effortlessly put together.",
+        "Your kindness is one of the things I noticed about you first, and it still gets me every time.",
+        "You are genuinely the funniest person to be around and you don't even try that hard.",
+        "I love that you are so driven. Watching you do TEDx and everything else you take on is so cool.",
+        "You are the prettiest girl I have ever seen and I still get a little nervous around you sometimes.",
+        "The way you remember little details about things I've said makes me feel so seen and cared for.",
+        "You are so toof at everything you try. Axe throwing, TEDx, pottery — you just go off.",
+        "I love how you make ordinary moments feel like something worth remembering.",
+        "You smell really good. That's it. That's the compliment.",
+        "You are the color I talked about. My life is genuinely brighter because you're in it.",
+        "I love how you can be both incredibly serious and incredibly silly within the same five minutes.",
+        "You are someone I look forward to talking to every single day, even on the hard days.",
+        "The fact that you stayed up talking to me until sunrise is something I will always treasure.",
+        "You give the best hugs and I miss them when you're far away.",
+        "I love that you push me to be better without ever making me feel bad about where I am.",
+        "You are so good at what you do and McKinsey is very lucky to have you.",
+        "You make me want to be a more thoughtful and intentional person just by being yourself.",
+        "Your face when you're genuinely excited about something is one of the best things I've ever seen.",
+        "I love how you can make any situation more fun just by being there.",
+        "You chose me and somehow that still feels like the nicest thing anyone has ever done.",
+        "I love you more than I know how to say, daween. You are my favorite person.",
+        "Every single day with you in it is just better. That's not an exaggeration. It's just true.",
+    ];
+
+    var last = -1;
+
+    window.newCompliment = function () {
+        var card = document.getElementById('cgen-card');
+        var text = document.getElementById('cgen-text');
+        if (!card || !text) return;
+
+        var idx;
+        do { idx = Math.floor(Math.random() * compliments.length); } while (idx === last);
+        last = idx;
+
+        card.classList.remove('cgen-pop');
+        void card.offsetWidth; // reflow to restart animation
+        card.classList.add('cgen-pop');
+        text.textContent = compliments[idx];
+    };
+})();
+
 // ── YouTube music player ──────────────────────────────────────────
 (function () {
     var tag = document.createElement('script');

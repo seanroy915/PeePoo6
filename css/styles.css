@@ -812,6 +812,91 @@ img { display: block; max-width: 100%; }
 /* =============================================================================
    LOVE LETTER
    ============================================================================= */
+/* ── Compliment Generator ── */
+#s-compliments {
+    background: linear-gradient(160deg, var(--cream) 0%, var(--blush-light) 100%);
+    padding: 5.5rem 1.5rem;
+    border-top: 3px solid rgba(200,150,160,.15);
+}
+
+.cgen-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.cgen-card {
+    width: 100%;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 12px 60px rgba(200,130,150,.18);
+    text-align: center;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.cgen-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 24px 24px 0 0;
+    background: linear-gradient(90deg, var(--blush-dark), var(--gold), var(--blush-dark));
+}
+
+.cgen-deco {
+    font-size: 1.8rem;
+    color: var(--blush-dark);
+    opacity: 0.5;
+}
+
+.cgen-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--brown);
+}
+
+@keyframes cgenPop {
+    0%   { opacity: 0; transform: translateY(12px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.cgen-pop { animation: cgenPop 0.4s cubic-bezier(.22,.68,0,1.2) forwards; }
+
+.cgen-btn {
+    background: var(--blush-dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2.6rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(200,100,120,.3);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.cgen-btn:hover  {
+    background: var(--brown);
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(120,70,60,.35);
+}
+
+.cgen-btn:active { transform: scale(0.97); }
+
 /* ── Songs ── */
 #s-songs {
     background: linear-gradient(155deg, var(--blush-light) 0%, var(--cream) 100%);
