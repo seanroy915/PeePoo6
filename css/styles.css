@@ -934,8 +934,8 @@ img { display: block; max-width: 100%; }
 
 .capy-trail {
     position: fixed;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     pointer-events: none;
     z-index: 99999;
