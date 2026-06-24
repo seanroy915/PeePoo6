@@ -928,19 +928,19 @@ img { display: block; max-width: 100%; }
 
 /* ── Capy cursor trail ── */
 @keyframes capyFade {
-    0%   { opacity: .85; transform: scale(1)    translateY(0); }
-    100% { opacity: 0;   transform: scale(0.55) translateY(-22px); }
+    0%   { opacity: .9;  transform: scale(1)    translateY(0); }
+    100% { opacity: 0;   transform: scale(0.7)  translateY(-30px); }
 }
 
 .capy-trail {
     position: fixed;
-    width: 56px;
-    height: 56px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     pointer-events: none;
     z-index: 99999;
     mix-blend-mode: multiply;
-    animation: capyFade 0.7s ease-out forwards;
+    animation: capyFade 2s ease-out forwards;
 }
 
 /* ── Timer ── */
