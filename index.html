@@ -819,6 +819,38 @@
                 </div>
             </div>
 
+            <div class="song-card">
+                <div class="song-info">
+                    <span class="song-ico">🎹</span>
+                    <div>
+                        <p class="song-title">Für Elise</p>
+                        <p class="song-artist">Beethoven</p>
+                    </div>
+                </div>
+                <button class="song-btn" id="btn-furelise" onclick="toggleSong('furelise')">▶&nbsp; Play</button>
+                <div class="song-yt">
+                    <iframe id="yt-furelise"
+                        src="https://www.youtube.com/embed/bP70gBZc564?enablejsapi=1&origin=https://seanroy915.github.io"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <div class="song-info">
+                    <span class="song-ico">✈️</span>
+                    <div>
+                        <p class="song-title">Long Distance</p>
+                        <p class="song-artist">G.E.M.</p>
+                    </div>
+                </div>
+                <button class="song-btn" id="btn-longdistance" onclick="toggleSong('longdistance')">▶&nbsp; Play</button>
+                <div class="song-yt">
+                    <iframe id="yt-longdistance"
+                        src="https://www.youtube.com/embed/l3lIqaUL71w?enablejsapi=1&origin=https://seanroy915.github.io"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -864,6 +896,12 @@
         });
         players.lana = new YT.Player('yt-lana', {
             events: { onStateChange: function (e) { syncBtn('lana', e.data); } }
+        });
+        players.furelise = new YT.Player('yt-furelise', {
+            events: { onStateChange: function (e) { syncBtn('furelise', e.data); } }
+        });
+        players.longdistance = new YT.Player('yt-longdistance', {
+            events: { onStateChange: function (e) { syncBtn('longdistance', e.data); } }
         });
     };
 
