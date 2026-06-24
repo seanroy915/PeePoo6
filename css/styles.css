@@ -926,6 +926,23 @@ img { display: block; max-width: 100%; }
     .songs-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Capy cursor trail ── */
+@keyframes capyFade {
+    0%   { opacity: .85; transform: scale(1)    translateY(0); }
+    100% { opacity: 0;   transform: scale(0.55) translateY(-22px); }
+}
+
+.capy-trail {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 99999;
+    mix-blend-mode: multiply;
+    animation: capyFade 0.7s ease-out forwards;
+}
+
 /* ── Timer ── */
 #s-timer { background: var(--cream); padding: 5.5rem 1.5rem; }
 

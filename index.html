@@ -890,6 +890,28 @@
 <script src="js/app.js" defer></script>
 
 <script>
+// ── Capy cursor trail ─────────────────────────────────────────────
+(function () {
+    var last = 0;
+    var THROTTLE = 40; // ms between spawns
+
+    document.addEventListener('mousemove', function (e) {
+        var now = Date.now();
+        if (now - last < THROTTLE) return;
+        last = now;
+
+        var el = document.createElement('img');
+        el.src = 'photos/droolingcapy.jpg';
+        el.className = 'capy-trail';
+        el.style.left = (e.clientX - 28) + 'px';
+        el.style.top  = (e.clientY - 28) + 'px';
+        document.body.appendChild(el);
+
+        // Remove after animation ends
+        el.addEventListener('animationend', function () { el.remove(); });
+    });
+})();
+
 // ── YouTube music player ──────────────────────────────────────────
 (function () {
     var tag = document.createElement('script');
