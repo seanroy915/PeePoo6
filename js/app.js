@@ -172,9 +172,14 @@ window.addEventListener('load', () => {
    Highlights whichever section occupies the centre of the screen
    ───────────────────────────────────────────────────────────── */
 (function initActiveTab() {
-    const tabs     = document.querySelectorAll('.tab');
-    const sections = document.querySelectorAll('.ts');
-    if (!tabs.length || !sections.length) return;
+    const tabs = document.querySelectorAll('.tab');
+    if (!tabs.length) return;
+
+    // Build section list from the tabs themselves so every tab target is tracked
+    const sections = Array.from(tabs)
+        .map(t => document.getElementById(t.dataset.to))
+        .filter(Boolean);
+    if (!sections.length) return;
 
     const obs = new IntersectionObserver(entries => {
         entries.forEach(entry => {
