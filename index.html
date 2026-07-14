@@ -895,7 +895,7 @@
 // ── Capy cursor trail ─────────────────────────────────────────────
 (function () {
     var last = 0;
-    var THROTTLE = 40; // ms between spawns
+    var THROTTLE = 120; // ms between spawns
 
     document.addEventListener('mousemove', function (e) {
         var now = Date.now();
@@ -905,8 +905,8 @@
         var el = document.createElement('img');
         el.src = 'photos/droolingcapy.jpg';
         el.className = 'capy-trail';
-        el.style.left = (e.clientX - 100) + 'px';
-        el.style.top  = (e.clientY - 100) + 'px';
+        el.style.left = (e.clientX - 45) + 'px';
+        el.style.top  = (e.clientY - 45) + 'px';
         document.body.appendChild(el);
 
         // Remove after animation ends
